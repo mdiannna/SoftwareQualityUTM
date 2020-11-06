@@ -44,12 +44,15 @@ class PythonOrgSearch(unittest.TestCase):
 
         assert elem_header is not None
         
+        assert "999" in elem_header.text
+        # self.assertIn("999", elem_header.text)
+        
         elem_header_by_css =   driver.find_element_by_css_selector(".header_bar_logo")
         assert elem_header_by_css is not None
 
         # elem_header.value_of_css_property(property_name)
 
-        self.assertIn("999", driver.page_source)
+        # self.assertIn("999", driver.page_source)
         # self.assertIn(".header_bar_logo", driver.page_source)
         # assert ".header_bar_logo" in driver.page_source
         # self.assertIn(".header_bar_logo",driver.page_source)
