@@ -12,7 +12,7 @@ class Header999(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
 
-    def test_search_in_python_org(self):
+    def testSearchInWebsite(self):
         driver = self.driver
 
         driver.get("https://999.md/ro/")
