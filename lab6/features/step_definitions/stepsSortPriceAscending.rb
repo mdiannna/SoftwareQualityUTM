@@ -17,7 +17,7 @@ Then('Choose Price\(Low-High) option in the Sort By select') do
 	dropDownMenu = driver.find_element(:id, 'country1')
 
 	option = Selenium::WebDriver::Support::Select.new(dropDownMenu)
-	option.select_by(:text, 'Name(A - Z)')
+	option.select_by(:text, 'Price(Low - High)')
 	# option.select_by(:value, '0')
 
 
