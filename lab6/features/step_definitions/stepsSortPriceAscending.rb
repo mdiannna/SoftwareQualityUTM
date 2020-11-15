@@ -23,5 +23,5 @@ Then('Choose Price\(Low-High) option in the Sort By select') do
 
 	# TODO:!!!! Check if results are sorted!!!
 
-    sleep(1)                                                                # sleep/pause 2 second
+    # sleep(1)                                                                # sleep/pause 2 second
 end

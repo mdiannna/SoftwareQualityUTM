@@ -1,13 +1,14 @@
 require 'selenium-webdriver'
 require 'rubygems'
 require 'rspec'
+require 'cucumber_priority'
 
 driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
 
 
-Given("open men's clothes page") do
+Given("Open Men's clothes page") do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/mens.html"         # direct to site
-end
+end.overridable
 
 
 Then("Select option 'More colors to choose' from the poll options") do
@@ -28,7 +29,7 @@ Then("Select option 'More colors to choose' from the poll options") do
 	# elem = driver.find_element(tag_name:'label')
 	log("Step2!")
 
-    sleep(1)                                                                # sleep/pause 2 second
+    # sleep(1)                                                                # sleep/pause 2 second
 end
 
 
@@ -36,6 +37,5 @@ end
 Then("validate result community poll") do
     driver.find_element(:css,'[type="submit"]').click                       # click submit 
 
-
-    sleep(1)                                                                # sleep/pause 2 second
+    # sleep(1)                                                                # sleep/pause 2 second
 end
