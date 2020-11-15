@@ -21,7 +21,26 @@ Then('Choose Price\(Low-High) option in the Sort By select') do
 	# option.select_by(:value, '0')
 
 
-	# TODO:!!!! Check if results are sorted!!!
+	products = driver.find_elements(:class, 'simpleCart_shelfItem')
 
-    # sleep(1)                                                                # sleep/pause 2 second
+	prices = []
+
+	for el in products
+		price = el.find_element(:class, "item_price")
+		# product = el.find_element(:tag_name, "h4")
+		# log(el)
+		# log(product.text)
+		priceText = price.text
+		priceText.slice! '$'
+		prices.push(priceText.to_f)
+		# log(price.text)
+	end
+
+	log(prices)
+	sortedPrices = prices.sort
+	log("sortedPrices:", sortedPrices)
+
+    expect(prices).to eq(sortedPrices)                      # validate items equal 
+
+	
 end

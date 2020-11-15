@@ -22,5 +22,19 @@ Then('Choose Name\(A - Z) option in the Sort By select') do
 
 	# TODO:!!!! Check if results are sorted!!!
 
-    # sleep(1)                                                                # sleep/pause 2 second
+	products = driver.find_elements(:class, 'simpleCart_shelfItem')
+
+	product_names = []
+
+	for el in products
+		# price = el.find_element(:class, "item_price")
+		product = el.find_element(:tag_name, "h4")
+		# log(el)
+		# log(product.text)
+		product_names.push(product.text)
+		# log(price.text)
+	end
+
+	log(product_names)
+
 end
