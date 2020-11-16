@@ -27,15 +27,23 @@ Then("Select option 'More colors to choose' from the poll options") do
 
 
 	# elem = driver.find_element(tag_name:'label')
-	log("Step2!")
+	# log("Step2!")
 
     # sleep(1)                                                                # sleep/pause 2 second
 end
 
 
-# 3.Press "Send" Button
-Then("validate result community poll") do
-    driver.find_element(:css,'[type="submit"]').click                       # click submit 
+Then("Submit poll") do
+	poll = driver.find_element(:class, "community-poll")
+    poll.find_element(:css,'[type="submit"]').click                       # click submit     
 
-    # sleep(1)                                                                # sleep/pause 2 second
+end
+
+
+Then("Check if community poll results submited") do
+	
+    # check if community poll disappeared from the page - results submited
+    poll = driver.find_elements(:class, "community-poll")
+
+    expect(poll.length).to eq(0)
 end
