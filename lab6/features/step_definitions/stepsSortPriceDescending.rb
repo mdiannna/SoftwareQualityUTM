@@ -58,17 +58,6 @@ Then('Choose Price\(High-Low) option in the Sort By select') do
 		# log(price.text)
 	end  
 
-	# for el in products
-	# 	price = el.find_element(:class, "item_price")
-	# 	# product = el.find_element(:tag_name, "h4")
-	# 	# log(el)
-	# 	priceText = price.text
-	# 	priceText.slice! '$'
-	# 	log(priceText)
-	# 	prices.push(priceText.to_f)
-	# 	# log(price.text)
-	# end
-
 
 	# sortedPricesInOrder = pricesWithCoords.sort { |a, b| [a['y'], a['x']] <=> [b['y'], b['x']] }
 	# sortedPricesInOrder = pricesWithCoords.sort_by { |a| a[:y]} #works
@@ -78,9 +67,11 @@ Then('Choose Price\(High-Low) option in the Sort By select') do
 	# sortedPricesInOrder = pricesWithCoords.sort_by{ |a,b| [a['y'] <=> b['y'], a['x'] <=> b['x']] }
 	log("sortedPricesInOrder", sortedPricesInOrder)
 
+	sortedPricesInOrderValues = []
 	log("-------")
 	for el in sortedPricesInOrder
 		log(el[:price])
+		sortedPricesInOrderValues.push(el[:price])
 	end
 	log("-------")
 	# sortedPricesInOrder = sortedPricesInOrder.tap { |hs| hs.delete(:y) }
@@ -92,7 +83,7 @@ Then('Choose Price\(High-Low) option in the Sort By select') do
 	sortedPricesDescending = prices.sort.reverse
 	log("sortedPricesDescending:", sortedPricesDescending)
 
-    expect(sortedPricesInOrder).to eq(sortedPricesDescending)
+    expect(sortedPricesInOrderValues).to eq(sortedPricesDescending)
 
 
 end
