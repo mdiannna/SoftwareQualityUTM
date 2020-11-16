@@ -11,12 +11,14 @@ Given("Access the page - Men's wear") do
 end
 # end.overridable
 
-Then('​​Click on any product ') do
-	pending
+Then('​​Click on any product') do
+	products = driver.find_elements(:class, 'simpleCart_shelfItem')
+	products[0].click
 end
 
 Then('Put the cursor of the image of the product in image viewer') do
-	pending
+	el = driver.find_element(:css, "div[class='imagezoom-cursor']")
+	driver.action.move_to(el).perform
 end
 
 Then('Move the cursor on the image') do
