@@ -47,3 +47,5 @@ Then("Check if community poll results submited") do
 
     expect(poll.length).to eq(0)
 end
+
+# driver.close()

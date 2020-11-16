@@ -68,3 +68,5 @@ Then('Choose Price\(High-Low) option in the Sort By select') do
 
     expect(sortedPricesInOrderValues).to eq(sortedPricesDescending)
 end
+
+# driver.close()

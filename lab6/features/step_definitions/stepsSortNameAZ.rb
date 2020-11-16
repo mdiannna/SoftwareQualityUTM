@@ -67,3 +67,5 @@ Then('Choose Name\(A - Z) option in the Sort By select') do
     expect(sortedNamesInOrderValues).to eq(sortedNamesAscending)
 
 end
+
+# driver.close()
