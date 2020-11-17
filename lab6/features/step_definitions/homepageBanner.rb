@@ -2,7 +2,12 @@ require 'selenium-webdriver'
 require 'rubygems'
 require 'rspec'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+driver = ""
+
+Before('@HomepageBanner') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
+
 
 
 Given('Access homepage') do
@@ -99,4 +104,6 @@ Then('Click on circles on the banner') do
 end
 
 
-# driver.close()
+After('@HomepageBanner') do
+	driver.close()
+end

@@ -1,7 +1,6 @@
 @TabsFunctionality
 Feature: Test tabs functionality in product page
 
-@Tabs
 Scenario: Test if the tabs are working properly in product page
 Given Access products page
 Then Click on "Reviews" tab

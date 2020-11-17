@@ -3,7 +3,12 @@ require 'rubygems'
 require 'rspec'
 require 'cucumber_priority'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+
+driver = ""
+
+Before('@CommunityPoll') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
 
 
 Given("Open Men's clothes page") do
@@ -48,4 +53,6 @@ Then("Check if community poll results submited") do
     expect(poll.length).to eq(0)
 end
 
-# driver.close()
+After('@CommunityPoll') do
+	driver.close()
+end

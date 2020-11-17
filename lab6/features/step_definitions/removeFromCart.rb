@@ -3,7 +3,12 @@ require 'rubygems'
 require 'rspec'
 # require 'cucumber_priority'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+
+driver = ""
+
+Before('@RemoveFromCart') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
 
 
 Given('Go to mens wear page') do
@@ -86,5 +91,6 @@ end
 
 
 
-
-
+After('@RemoveFromCart') do
+	driver.close()
+end

@@ -1,7 +1,6 @@
 @ProductReviewFunctionality
 Feature: Test write a review in products page
 
-@WriteReview
 Scenario: Test feature to write a review in products page form
 Given Access the products page
 Then ​Click on tab Reviews

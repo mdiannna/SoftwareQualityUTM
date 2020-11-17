@@ -2,8 +2,11 @@ require 'selenium-webdriver'
 require 'rubygems'
 require 'rspec'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+driver = ""
 
+Before('@SortMensWear') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
 
 Given("Open men's clothes webpage") do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/mens.html"         # direct to site
@@ -70,3 +73,10 @@ Then('Choose Price\(High-Low) option in the Sort By select') do
 end
 
 # driver.close()
+
+
+
+
+After('@SortMensWear') do
+	driver.close()
+end

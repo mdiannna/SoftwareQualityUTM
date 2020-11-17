@@ -2,7 +2,11 @@ require 'selenium-webdriver'
 require 'rubygems'
 require 'rspec'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+driver = ""
+
+Before('@ProductReviewFunctionality') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
 
 
 Given('Access the products page') do
@@ -131,4 +135,8 @@ Then('​Click on SEND button') do
 
 	page_text = driver.find_element(:css, "body").text()
 	expect(page_text.downcase).not_to include("page not found")
+end
+
+After('@ProductReviewFunctionality') do
+	driver.close()
 end

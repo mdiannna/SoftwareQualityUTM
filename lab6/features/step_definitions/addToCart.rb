@@ -3,8 +3,11 @@ require 'rubygems'
 require 'rspec'
 # require 'cucumber_priority'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+driver = ""
 
+Before('@AddToCart') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
 
 Given("Open Page Men's clothes") do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/mens.html"         # direct to site
@@ -50,4 +53,10 @@ Then('Go to the first product and click on "Add to Cart"') do
 
 	# item.find_element(:css,'[type="submit"]').click                       # click submit 
 	# log(item.text)
+end
+
+
+
+After('@AddToCart') do
+	driver.close()
 end

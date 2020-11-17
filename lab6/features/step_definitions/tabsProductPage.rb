@@ -2,7 +2,12 @@ require 'selenium-webdriver'
 require 'rubygems'
 require 'rspec'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+
+driver = ""
+
+Before('@TabsFunctionality') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
 
 
 Given('Access products page') do
@@ -116,4 +121,8 @@ Then('Click on "Information" tab again') do
 
 	# check if text "add a review is present in the active tab"
 	expect(productName.text.downcase).to eq('Big Wing Sneakers (Navy)'.downcase)
+end
+
+After('@TabsFunctionality') do
+	driver.close()
 end

@@ -3,7 +3,13 @@ require 'rubygems'
 require 'rspec'
 # require 'cucumber_priority'
 
-driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+
+driver = ""
+
+Before('@ImageViewerFunctionality') do
+	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+end
+
 
 Given("Access the page - Men's wear") do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/mens.html"         # direct to site
@@ -132,4 +138,10 @@ Then('Click on the first image from the image slider') do
 	log("srcNewCompare: ", srcNewCompare )
 
 	expect(srcNewCompare).to eq(srcImg1)
+end
+
+
+
+After('@ImageViewerFunctionality') do
+	driver.close()
 end
