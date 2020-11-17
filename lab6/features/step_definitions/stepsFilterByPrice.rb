@@ -14,11 +14,39 @@ Given('Access mens wear page') do
 end
 
 Then('Check if the range slider is working by moving the cursor to the right') do
-  pending # Write code here that turns the phrase above into concrete actions
+	slider = driver.find_element(:id, "slider-range")
+	
+	driver.action.move_to(slider)
+		   .click()
+		   .drag_and_drop_by(slider, -30, 0)
+		   .perform()
+	sleep(1)
+
+	log("slider:", slider)
+	# log("slider size:", slider.get_size())
+
+	log("slider full size:", slider.size())
+	sliderEl = slider.find_element(:class, "ui-slider-range")
+	log("slider el size:", sliderEl.size())
 end
 
+
 Then('Check if the range slider is working by moving the cursor to the left') do
-  pending # Write code here that turns the phrase above into concrete actions
+	slider = driver.find_element(:id, "slider-range")
+	
+	driver.action.move_to(slider)
+		   .click()
+		   .drag_and_drop_by(slider, 50, 0)
+		   .perform()
+	sleep(1)
+
+	log("slider:", slider)
+	# log("slider size:", slider.get_size())
+
+	log("slider full size:", slider.size())
+	sliderEl = slider.find_element(:class, "ui-slider-range")
+	log("slider el size:", sliderEl.size())
+
 end
 
 Then('Select the range ${int}-${int}') do |int, int2|
