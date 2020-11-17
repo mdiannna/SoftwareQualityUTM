@@ -110,6 +110,7 @@ Then('Check if the range slider is working by moving the cursor to the left') do
 	# driver.action.drag_and_drop_by(sliderHandleRight, -1300/amountOnePixel, 0).perform()
 	# driver.action.drag_and_drop_by(sliderHandleRight, (-1300.0/amountOnePixel).round(), 0).click().perform()
 
+	# !!! below works but need to add width of slider!!
 	# 3 este de fapt widthul elementului mic din slider
 	# 1300 este diferenta de la 1500 pana la 200
 	# 20-200
@@ -126,6 +127,7 @@ Then('Check if the range slider is working by moving the cursor to the left') do
 	sleep(0.5)
 
 	# 38-63
+	# driver.action.drag_and_drop_by(sliderHandleRight, (60.0/amountOnePixel).to_f()-2.35, 0).click().perform()
 	driver.action.drag_and_drop_by(sliderHandleRight, (60.0/amountOnePixel).to_f()-2.35, 0).click().perform()
 	driver.action.drag_and_drop_by(sliderHandleLeft, (40/amountOnePixel).to_f()-2.7, 0).click().perform()
 
