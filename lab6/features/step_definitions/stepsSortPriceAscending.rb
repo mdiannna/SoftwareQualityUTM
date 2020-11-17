@@ -4,7 +4,8 @@ require 'rspec'
 
 driver = ""
 
-Before('@SortMensWear') do
+# Before('@SortMensWear') do
+Before('@sortPriceAscending') do
 	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
 end
 
