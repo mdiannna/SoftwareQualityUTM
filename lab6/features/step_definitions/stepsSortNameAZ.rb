@@ -24,13 +24,11 @@ Then('Choose Name\(A - Z) option in the Sort By select') do
 
 	option = Selenium::WebDriver::Support::Select.new(dropDownMenu)
 	option.select_by(:text, 'Name(A - Z)')
-	# option.select_by(:value, '0')
 	
 	sleep(1)
 
 	products = []
 	products = driver.find_elements(:class, 'simpleCart_shelfItem')
-	# log("products:", products)
 
 	names = []
 	namesWithCoords = []
@@ -67,15 +65,12 @@ Then('Choose Name\(A - Z) option in the Sort By select') do
 	log("-------")
 	
 
-	# sortedNamesDescending = names.sort.reverse
 	sortedNamesAscending = names.sort
 	log("sortedNamesAscending:", sortedNamesAscending)
 
     expect(sortedNamesInOrderValues).to eq(sortedNamesAscending)
 
 end
-
-# driver.close()
 
 
 

@@ -10,7 +10,6 @@ end
 
 
 def moveSlider(driver, slider, value)
-	# driver.action.move_to(slider)
 	driver.action
 		   .drag_and_drop_by(slider, value, 0)
 		   .perform()
@@ -58,74 +57,29 @@ Then('Check if the range slider is working by moving the cursor to the right') d
 	
 	moveSlider(driver, slider, -30)
 	sleep(1)
-
-	log("slider:", slider)
-	# log("slider size:", slider.get_size())
-
-	log("slider full size:", slider.size())
-	sliderEl = slider.find_element(:class, "ui-slider-range")
-	log("slider el size:", sliderEl.size())
 end
 
 
 Then('Check if the range slider is working by moving the cursor to the left') do
 	slider = driver.find_element(:id, "slider-range")
 	
-	# moveSlider(driver, slider, 30)
 	moveSlider(driver, slider, 0)
 	moveSlider(driver, slider, 30)
 
-	
 	sleep(1)
-
-	log("slider:", slider)
-	# log("slider size:", slider.get_size())
-
-	log("slider full size:", slider.size())
-	sliderEl = slider.find_element(:class, "ui-slider-range")
-	log("slider el size:", sliderEl.size())
-
-
-
-	# ##########33 For test - next TODO
-	# sliderHandleLeft, sliderHandleRight = getSliderHandles(driver)
-
-	# # driver.action.move_to(sliderHandleLeft, 50, 0).click().perform()
-	# amountOnePixel = 3000/720.0
-
-	# # driver.action.drag_and_drop_by(sliderHandleLeft, 20.0/amountOnePixel, 0).perform()
-	# sleep(1)
-	# log("!!!", (-1300.0/amountOnePixel).to_f())
-	# # driver.action.drag_and_drop_by(sliderHandleRight, -1300/amountOnePixel, 0).perform()
-	# # driver.action.drag_and_drop_by(sliderHandleRight, (-1300.0/amountOnePixel).round(), 0).click().perform()
 end
 
-
-def moveLeft1(driver, sliderHandle)
-	# driver.action.drag_and_drop_by(sliderHandle, 1, 0).click().perform()
-	driver.action.drag_and_drop_by(sliderHandle, 1, 0).perform()
-	log("<<move lef1")
-end
-
-def moveRight1(driver, sliderHandle)
-	# driver.action.drag_and_drop_by(sliderHandle, -1, 0).click().perform()
-	driver.action.drag_and_drop_by(sliderHandle, -1, 0).perform()
-	log(">>move right1")
-end
 
 def getSliderAmount(driver)
 	amount = driver.find_element(:id, "amount").attribute('value')
 	log("amount:", amount)
-	log("amount:", amount.delete(" $"))
-	# log( )
-	log("amount split:", amount.split)
 	log("amount split:", amount.delete(" $").split("-"))
-	leftPos, rightPos = amount.delete(" $").split("-")
-	log("left pos:", leftPos)
-	log("right pos:", rightPos)
+	
+	leftAmount, rightAmount = amount.delete(" $").split("-")
 
-	return leftPos.to_f, rightPos.to_f
+	return leftAmount.to_f, rightAmount.to_f
 end
+
 
 Then('Select the range approx. ${int}-${int} and check products') do |int1, int2|
 	slider = driver.find_element(:id, "slider-range")
@@ -134,21 +88,13 @@ Then('Select the range approx. ${int}-${int} and check products') do |int1, int2
 
 	moveSlider(driver, slider, 0)
 
-		# !!! below works but need to add width of slider!!
-	# 3 este de fapt widthul elementului mic din slider
-	# 1300 este diferenta de la 1500 pana la 200
-	# 20-200
 	sliderHandleLeft, sliderHandleRight = getSliderHandles(driver)
 
 	currentPosRight = 1500
-	# currentPosLeft = 20
-	# currentPosLeft = (sliderHandleLeft.location.x.to_f - slider.location.x.to_f - sliderHandleLeft.size.width.to_f) * amountOnePixel
 	currentPosLeft = (sliderHandleLeft.location.x.to_f - slider.location.x.to_f + sliderHandleLeft.size.width.to_f/2) * amountOnePixel
-	# log("currentPosLeft:", currentPosLeft)
 
 	sleep(1)
 	
-	# driver.action.drag_and_drop_by(sliderHandleRight, (-1301.0/amountOnePixel).to_f()-3, 0).click().perform()
 	driver.action.drag_and_drop_by(sliderHandleRight, (-(currentPosRight-int2+3)/amountOnePixel).to_f(), 0).click().perform()
 	sleep(0.5)
 	driver.action.drag_and_drop_by(sliderHandleLeft, (-(currentPosLeft-int1-1)/amountOnePixel).to_f(), 0).click().perform()

@@ -9,7 +9,6 @@ Before('@HomepageBanner') do
 end
 
 
-
 Given('Access homepage') do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/index.html"         # direct to site
 end
@@ -17,7 +16,6 @@ end
 
 Then('Click on right arrow on the banner') do
 	slider = driver.find_element(:css, ".carousel-inner")
-	# slider = slider.find_element(:css, "div[class='item active']")
 	slider = slider.find_element(:css, ".active")
 
 	slideCaption1 = slider.find_element(:css, ".carousel-caption").find_element(:css, "h3")
@@ -29,13 +27,9 @@ Then('Click on right arrow on the banner') do
     sleep(1)
 
 	slider = driver.find_element(:css, ".carousel-inner")
-	# slider = slider.find_element(:css, "div[class='active']")
 	slider = slider.find_element(:css, ".active")
 
-    # slideCaption2 = slider.find_element(:css, ".carousel-caption").find_element(:css, "h3").text
-    # slideCaption2 = slider.find_element(:css, ".carousel-caption").text
     slideCaption2 = slider.find_element(:css, ".carousel-caption").find_element(:css, "p")
-	# slideCaption2 = slider.find_element(:css, ".carousel-caption")
 
 	log("Slide 2 caption:", slideCaption2.text)
 
@@ -58,14 +52,9 @@ Then('Click on left arrow on the banner') do
     sleep(1)
 
 	slider = driver.find_element(:css, ".carousel-inner")
-	# slider = slider.find_element(:css, "div[class='active']")
 	slider = slider.find_element(:css, ".active")
 
-    # slideCaption2 = slider.find_element(:css, ".carousel-caption").find_element(:css, "h3").text
-    # slideCaption2 = slider.find_element(:css, ".carousel-caption").text
     slideCaption2 = slider.find_element(:css, ".carousel-caption").find_element(:css, "p")
-	# slideCaption2 = slider.find_element(:css, ".carousel-caption")
-
 	log("Slide 2 caption:", slideCaption2.text)
 
 	# check if slide changed
@@ -75,7 +64,6 @@ end
 
 Then('Click on circles on the banner') do
 	slider = driver.find_element(:css, ".carousel-inner")
-	# slider = slider.find_element(:css, "div[class='item active']")
 	slider = slider.find_element(:css, ".active")
 	
 
@@ -89,13 +77,9 @@ Then('Click on circles on the banner') do
     sleep(1)
 
 	slider = driver.find_element(:css, ".carousel-inner")
-	# slider = slider.find_element(:css, "div[class='active']")
 	slider = slider.find_element(:css, ".active")
 
-    # slideCaption2 = slider.find_element(:css, ".carousel-caption").find_element(:css, "h3").text
-    # slideCaption2 = slider.find_element(:css, ".carousel-caption").text
     slideCaption2 = slider.find_element(:css, ".carousel-caption").find_element(:css, "p")
-	# slideCaption2 = slider.find_element(:css, ".carousel-caption")
 
 	log("Slide 2 caption:", slideCaption2.text)
 

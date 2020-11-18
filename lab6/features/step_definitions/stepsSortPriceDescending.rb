@@ -9,10 +9,6 @@ Before('@SortMensWear') do
 end
 
 
-# Before('@SortPriceDescending') do
-# 	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
-# end
-
 Given("Open men's clothes webpage") do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/mens.html"         # direct to site
 end
@@ -20,23 +16,18 @@ end
 
 Then('Choose Price\(High-Low) option in the Sort By select') do
 
-	# dropDownMenu = driver.find_element(:class, 'dropDownMenu')
 	dropDownMenu = driver.find_element(:id, 'country1')
 
 	option = Selenium::WebDriver::Support::Select.new(dropDownMenu)
 	option.select_by(:text, 'Price(High - Low)')
-	# option.select_by(:value, 'Price(High - Low)')
-	# option.select_by(:value, '0')
 
 	sleep(1)
 	
 	products = []
 	products = driver.find_elements(:class, 'simpleCart_shelfItem')
-	log("products:", products)
 
 	prices = []
 	pricesWithCoords = []
-
 
 	products.each do |el|
 
@@ -65,10 +56,12 @@ Then('Choose Price\(High-Low) option in the Sort By select') do
 
 	sortedPricesInOrderValues = []
 	log("-------")
+
 	for el in sortedPricesInOrder
 		log(el[:price])
 		sortedPricesInOrderValues.push(el[:price])
 	end
+
 	log("-------")
 
 	sortedPricesDescending = prices.sort.reverse
@@ -77,11 +70,8 @@ Then('Choose Price\(High-Low) option in the Sort By select') do
     expect(sortedPricesInOrderValues).to eq(sortedPricesDescending)
 end
 
-# driver.close()
-
 
 
 After('@SortMensWear') do
-# After('@SortPriceDescending') do
 	driver.close()
 end

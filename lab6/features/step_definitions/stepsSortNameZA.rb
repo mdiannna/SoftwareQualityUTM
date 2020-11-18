@@ -19,19 +19,16 @@ end
 
 Then('Choose Name\(Z - A) option in the Sort By select') do
 
-	# dropDownMenu = driver.find_element(:class, 'dropDownMenu')
 	dropDownMenu = driver.find_element(:id, 'country1')
 
 	option = Selenium::WebDriver::Support::Select.new(dropDownMenu)
 	option.select_by(:text, 'Name(Z - A)')
-	# option.select_by(:value, '0')
 
 	sleep(1)
 	
 
 	products = []
 	products = driver.find_elements(:class, 'simpleCart_shelfItem')
-	log("products:", products)
 
 	names = []
 	namesWithCoords = []
