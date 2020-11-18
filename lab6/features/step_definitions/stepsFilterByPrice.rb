@@ -224,7 +224,7 @@ Then('Select the range approx. ${int}-${int} and check products') do |int1, int2
 	# currentPosLeft = 20
 	# currentPosLeft = (sliderHandleLeft.location.x.to_f - slider.location.x.to_f - sliderHandleLeft.size.width.to_f) * amountOnePixel
 	currentPosLeft = (sliderHandleLeft.location.x.to_f - slider.location.x.to_f + sliderHandleLeft.size.width.to_f/2) * amountOnePixel
-	log("currentPosLeft:", currentPosLeft)
+	# log("currentPosLeft:", currentPosLeft)
 
 	sleep(1)
 	
@@ -235,35 +235,26 @@ Then('Select the range approx. ${int}-${int} and check products') do |int1, int2
 	sleep(0.5)
 
 
-	leftPos, rightPos = getSliderAmount(driver)
+	leftAmount, rightAmount = getSliderAmount(driver)
 
-	# while (rightPos - int2) <-5
-	# 	moveRight1(driver,sliderHandleRight)
-	# 	sleep(0.5)
+	products = driver.find_elements(:class, 'simpleCart_shelfItem')
 
-	# 	leftPos, rightPos = getSliderAmount(driver)
-	# end
+	prices = []
 
-	# while (rightPos - int2) > 5
-	# 	moveLeft1(driver,sliderHandleRight)
-	# 	leftPos, rightPos = getSliderAmount(driver)
-	# end
+	products.each do |el|
 
-	# while leftPos < int1
-	# 	moveRight1(driver,sliderHandleLeft)
-	# 	leftPos, rightPos = getSliderAmount(driver)
-	# end
+		if el.displayed?
+	    	price = el.find_element(:class, "item_price")
 
-	# while leftPos > int1
-	# 	moveLeft1(driver,sliderHandleLeft)
-	# 	leftPos, rightPos = getSliderAmount(driver)
-	# end
+			priceText = price.text
+			priceText.slice! '$'
+			prices.push(priceText.to_f())
+		end
+	end
 
-	# amount.slice! '$20 - $'
-
-	# driver.action.drag_and_drop_by(sliderHandleRight, (-(curentPos-int2)/amountOnePixel).to_f(), 0).perform()
-
-	# driver.action.move_to(sliderHandleRight, 100, 0).click().perform()
+	expect(prices.min >= leftAmount)
+	expect(prices.max <=rightAmount)
+	
 	sleep(1)
 
 end
