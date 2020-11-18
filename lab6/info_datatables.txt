@@ -1,0 +1,7 @@
+http://www.automationtestinghub.com/cucumber-data-table/
+https://www.testcookbook.com/book/ruby/cucumber-data-tables.html
+https://stackoverflow.com/questions/35698666/how-to-implement-data-tables-in-cucumber-ruby-i-need-an-example-to-use-both-dat
+https://www.rubydoc.info/gems/cucumber/Cucumber/MultilineArgument/DataTable
+
+
+https://www.rubydoc.info/gems/selenium-webdriver/Selenium/WebDriver/ActionBuilder
