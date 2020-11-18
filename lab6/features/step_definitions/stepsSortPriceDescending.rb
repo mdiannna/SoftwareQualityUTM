@@ -4,10 +4,14 @@ require 'rspec'
 
 driver = ""
 
-# Before('@SortMensWear') do
-Before('@SortPriceDescending') do
+Before('@SortMensWear') do
 	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
 end
+
+
+# Before('@SortPriceDescending') do
+# 	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+# end
 
 Given("Open men's clothes webpage") do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/mens.html"         # direct to site
@@ -77,7 +81,7 @@ end
 
 
 
-
 After('@SortMensWear') do
+# After('@SortPriceDescending') do
 	driver.close()
 end

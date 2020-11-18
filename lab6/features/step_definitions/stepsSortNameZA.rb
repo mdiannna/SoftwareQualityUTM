@@ -4,10 +4,13 @@ require 'rspec'
 
 driver = ""
 
-# Before('@SortMensWear') do
-Before('@SortZA') do
+Before('@SortMensWear') do
 	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
 end
+
+# Before('@SortZA') do
+# 	driver = Selenium::WebDriver.for:chrome                                     # webdriver with chromedriver
+# end
 
 Given("Open page men's clothes") do
   driver.navigate.to "https://adoring-pasteur-3ae17d.netlify.app/mens.html"         # direct to site
@@ -70,8 +73,8 @@ Then('Choose Name\(Z - A) option in the Sort By select') do
     expect(sortedNamesInOrderValues).to eq(sortedNamesDescending)
 end
 
-# driver.close()
 
 After('@SortMensWear') do
+# After('@SortZA') do
 	driver.close()
 end
