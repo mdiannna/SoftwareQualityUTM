@@ -14,12 +14,14 @@ Given('Go to google.com') do
   driver.navigate.to "https://www.google.com/"         # direct to site
 end
 
+
 Then('Write non existing data ++++++ in search input') do
  	search_input = driver.find_element(:class, 'gLFyf')
  	search_input.clear()
  	search_input.send_keys("++++++")
  	sleep(1)
 end
+
 
 Then('Click search') do	
  	# search_button = driver.find_element(:css, "input[class='gNO89b']")
@@ -31,8 +33,8 @@ Then('Click search') do
  	sleep(2)
 end
 
+
 Then('It should not display any results') do
-	# result = driver.find_element(:css, "div[class='mw']")
 	result = driver.find_element(:id, "res")
 
 	# expect(result.text()).to include('Căutarea dvs. - ++++++ - nu a returnat niciun document')
@@ -46,6 +48,7 @@ Then('Write word "Technical" in search input') do
  	search_input.send_keys("Technical")
  	sleep(1)
 end
+
 
 Then('It should display results for "Technical" word search') do
 	# merge si cu res si cu search
@@ -62,6 +65,7 @@ Then('It should display results for "Technical" word search') do
 	expect(search_item_results.length).not_to eq(0)
 end
 
+
 Then('Results should be similar to term "Technical"') do
 	result = driver.find_element(:id, "res")
 
@@ -72,6 +76,7 @@ Then('Results should be similar to term "Technical"') do
 		expect(search_item.text.downcase).to include('technical')
 	end
 end
+
 
 After('@SearchOnGoogle') do
 	driver.close()
