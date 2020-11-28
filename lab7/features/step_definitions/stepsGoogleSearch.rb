@@ -8,34 +8,25 @@ USERNAME = "diana367"
 AUTOMATE_KEY = "NmsqJih8tcUphDjkhqqS"
 browserstack_url = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub"
 
-# windows10 with chrome
-# caps = Selenium::WebDriver::Remote::Capabilities.new 
-# caps['os'] = 'Windows'
-# caps['os_version'] = '10'
-
-        
-
-# samsung galaxy with chrome
 caps = Selenium::WebDriver::Remote::Capabilities.new
-caps["os_version"] = "9.0"
-caps["device"] = "Samsung Galaxy Note 10"
-caps["real_mobile"] = "true"
-caps["browserstack.local"] = "false"
-
+        
+caps['os'] = 'Windows'
+caps['os_version'] = '10'
 caps['browser'] = 'Chrome'
 caps['browser_version'] = '80'
-
-
 caps['takesScreenshot'] = true
+        
 caps['name'] = "Test Google Search"
+
+
 
 # Before('@SearchNonExistingData') do
 Before('@SearchOnGoogle') do
 	# Running on local:
-	# driver = Selenium::WebDriver.for:chrome
+	driver = Selenium::WebDriver.for:chrome
 
 	# Running on browserstack
-	driver = Selenium::WebDriver.for(:remote, :url => browserstack_url, :desired_capabilities => caps)
+	# driver = Selenium::WebDriver.for(:remote, :url => browserstack_url, :desired_capabilities => caps)
 end
 
 
